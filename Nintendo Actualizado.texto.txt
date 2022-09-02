@@ -1,0 +1,134 @@
+
+
+CREATE TABLE cliente (
+
+	cedula int not null,
+	nombre varchar (20),
+	direccion varchar (50),
+	telefono varchar (15),
+	constraint pk_cliente primary key (cedula)
+);
+
+
+CREATE TABLE persona (
+
+	cedula int not null,
+	nombre varchar (20),
+	tipo varchar (30),
+	direccion varchar (50),
+	telefono varchar (15),
+	ci_cliente int,
+	ci_empleado int,
+	ci_programador int,
+	constraint pk_persona primary key (cedula),
+	constraint fk_cliente foreign key (ci_cliente) references cliente (cedula)
+);
+
+
+CREATE TABLE videojuegos (
+
+	nombre varchar (80) not null,
+	tipo_juego varchar (60),
+	precio int,
+	numero_V int,
+	fecha_Salida date,
+	programadores varchar (120),
+	constraint pk_videojuegos primary key (nombre)
+);
+
+
+
+
+CREATE TABLE compra (
+
+	fecha_C date not null,
+	videojuego varchar (120),
+	sede varchar (40),
+	monto int,
+	cedula_cliente int,
+	ci_empleados int,
+	name_videojuegos varchar (120),
+	empleado_atendio varchar (20),
+	constraint pk_compra primary key (fecha_C),
+	constraint fk_cliente foreign key (cedula_cliente) references cliente (cedula),
+	constraint fk_videojuegos foreign key (name_videojuegos) references videojuegos (nombre)
+);
+
+
+INSERT INTO persona VALUES ( 23541612 , 'Alejandro',  'Programador' ,  'Pensacola, Florida' , '0424-2564321');
+INSERT INTO persona VALUES ( 27634901 , 'Marina' , 'Programador' , 'Orlando, Florida' , '0414-2789902');
+INSERT INTO persona VALUES ( 24765294 , 'Dionny',  'Programador' ,  'Greenville, Carolina del Sur'  ,  '0416-3459823');
+INSERT INTO persona VALUES ( 25152809 , 'Samantha' ,  'Programador' ,  'Columbia, Carolina del Sur' , '0424-2387654'); 
+INSERT INTO persona VALUES ( 18930903 , 'Claudia' ,  'Programador'  ,  'Bogota, Colombia'  ,  '0414-2655300');
+INSERT INTO persona VALUES ( 23701380 , 'Franco',  'Programador'  ,  'Cali, Colombia'  , '0412-6789045');
+INSERT INTO persona VALUES ( 19784654 , 'Alicia' , 'empleado' , 'Caracas, Venezuela' , '0412-4567896');
+INSERT INTO persona VALUES ( 16653890, 'Hector' , 'supervisor' , 'Caracas, Venezuela' , '0424-2015977');
+INSERT INTO persona VALUES ( 20632974, 'Eustaquio' , 'empleado' , 'Caracas, Venezuela ' , '0416-3457347');
+INSERT INTO persona VALUES ( 20543792, 'Reyshell' , 'empleado' , 'Caracas, Venezuela' , '0414-2567789');
+INSERT INTO persona VALUES ( 14754223, 'Roberto' , 'supervisor' , 'Bogota, Colombia' , '0424-2678897');
+INSERT INTO persona VALUES ( 23428964, 'Ignacio' , 'empleado' , 'Bogota, Colombia' , '0412-2381987');
+INSERT INTO persona VALUES ( 19590093, 'Jennifer' , 'empleado' , 'Bogota, Colombia' , '0424-5572390');
+INSERT INTO persona VALUES ( 20512230, 'Tito' , 'empleado' , 'Bogota, Colombia' , '0412-5789823');
+INSERT INTO persona VALUES ( 25436269, 'Michael', 'supervisor' , 'Santiago, Chile' , '0424-2891565');
+INSERT INTO persona VALUES ( 22754982, 'Jose', 'empleado' , 'Santiago, Chile' , '0416-8903457');
+INSERT INTO persona VALUES ( 23455901, 'Yeliner', 'empleado' , 'Santiago, Chile' , '0412-7649032');
+INSERT INTO persona VALUES ( 21763334, 'Janny', 'empleado' , 'Santiago, Chile' , '0424-5556897');
+INSERT INTO persona VALUES ( 21084000, 'Judit Espin', 'cliente' , 'Caracas,Venezuela' , '0424-4381376');
+INSERT INTO persona VALUES ( 20904788, 'Lazaro Chavez', 'cliente' , 'Caracas,Venezuela' , '0412-9476288');
+INSERT INTO persona VALUES ( 29950856, 'Marisela Villalobos', 'cliente' , 'Caracas,Venezuela' , '0414-3702687');
+INSERT INTO persona VALUES ( 26356760, 'Camila Estevez', 'cliente' , 'Caracas,Venezuela' , '0212-5049904');
+INSERT INTO persona VALUES ( 28920558, 'Evangelina Saez', 'cliente' , 'Bogota, Colombia' , '0424-9890056');
+INSERT INTO persona VALUES ( 27903171, 'Noe Carrillo', 'cliente' , 'Bogota, Colombia' , '0414-4815259');
+INSERT INTO persona VALUES ( 22647907, 'Marisela Gonzalez', 'cliente' , 'Bogota, Colombia' , '0212-6006262');
+INSERT INTO persona VALUES ( 23980727, 'Joel Mariño', 'cliente' , 'Bogota, Colombia' , '0424-4957771');
+INSERT INTO persona VALUES ( 27088060, 'Mercedes Favonia', 'cliente' , 'Santiago, Chile' , '0412-9377078');
+INSERT INTO persona VALUES ( 19265503, 'Jade Aragon', 'cliente' , 'Santiago, Chile' , '0414-7126131');
+INSERT INTO persona VALUES ( 13222745, 'Marti Miranda', 'cliente' , 'Santiago, Chile' , '0212-7925601');
+INSERT INTO persona VALUES ( 16843943, 'Óscar Piña', 'cliente' , 'Santiago, Chile' , '0412-8103752');
+
+
+INSERT INTO cliente VALUES ( 21084000, 'Judit Espin', 'Caracas,Venezuela', '0424-4381376');
+INSERT INTO cliente VALUES ( 20904788, 'Lazaro Chavez', 'Caracas,Venezuela', '0412-9476288');
+INSERT INTO cliente VALUES ( 29950856, 'Marisela Villalobos', 'Caracas,Venezuela', '0414-3702687');
+INSERT INTO cliente VALUES ( 26356760, 'Camila Estevez', 'Caracas,Venezuela', '0212-5049904');
+INSERT INTO cliente VALUES ( 28920558, 'Evangelina Saez', 'Bogota, Colombia', '0424-9890056');
+INSERT INTO cliente VALUES ( 27903171, 'Noe Carrillo', 'Bogota, Colombia', '0414-4815259');
+INSERT INTO cliente VALUES ( 22647907, 'Marisela Gonzalez', 'Bogota, Colombia', '0212-6006262');
+INSERT INTO cliente VALUES ( 23980727, 'Joel Mariño', 'Bogota, Colombia', '0424-4957771');
+INSERT INTO cliente VALUES ( 27088060, 'Mercedes Favonia', 'Santiago, Chile', '0412-9377078');
+INSERT INTO cliente VALUES ( 19265503, 'Jade Aragon', 'Santiago, Chile', '0414-7126131');
+INSERT INTO cliente VALUES ( 13222745, 'Marti Miranda', 'Santiago, Chile', '0212-7925601');
+INSERT INTO cliente VALUES ( 16843943, 'Óscar Piña', 'Santiago, Chile', '0412-8103752');
+
+INSERT INTO videojuegos VALUES ( 'Animal Crossing: New Leaf', 'Simulacion de Vida', 13, 1, '2012/11/08', 'Alejandro, Samantha, Dionny');
+INSERT INTO videojuegos VALUES ( 'Pokemon X', 'Rol', 7, 4, '2013/10/12', 'Dionny, Franco');
+INSERT INTO videojuegos VALUES ( 'Kirby Fighters 2', 'Pelea, Plataformas', 14, 4, '2020/09/23', 'Marina');
+INSERT INTO videojuegos VALUES ( 'No Marios Sky', 'Accion, Aventura', 12, 4, '2016/08/30', 'Claudia, Franco');
+INSERT INTO videojuegos VALUES ( 'Yoshis Crafted World', 'Plataformas', 12, 4, '2019/03/29', 'Alejandro, Franco, Dionny');
+INSERT INTO videojuegos VALUES ( 'Fire Emblem: Three Houses', 'Rol Tactico', 14, 3, '2019/07/26', 'Samantha, Claudia, Alejandro, Dionny');
+
+INSERT INTO compra VALUES ( '2020/10/09', 'Animal Crossing: New Leaf', 'Caracas,Venezuela', 13, 21084000, 1, 'Animal Crossing: New Leaf', 'Alicia');
+INSERT INTO compra VALUES ( '2019/07/12', 'Fire Emblem: Three Houses', 'Bogota, Colombia', 14, 28920558, 23428964, 'Fire Emblem: Three Houses', 'Ignacio');
+INSERT INTO compra VALUES ( '2019/04/03', 'Kirby Fighters 2', 'Santiago, Chile', 14, 27088060, 22754982, 'Kirby Fighters 2', 'Jose');
+INSERT INTO compra VALUES ( '2021/05/31', 'Animal Crossing: New Leaf', 'Santiago, Chile', 13, 19265503, 23455901, 'Animal Crossing: New Leaf', 'Yeliner');
+INSERT INTO compra VALUES ( '2020/09/25', 'No Marios Sky', 'Caracas,Venezuela', 12, 20904788, 19784654, 'No Marios Sky', 'Alicia');
+INSERT INTO compra VALUES ( '2021/07/20', 'Pokemon X', 'Bogota, Colombia', 7, 27903171, 23428964, 'Pokemon X', 'Ignacio');
+INSERT INTO compra VALUES ( '2020/08/14', 'Yoshis Crafted World', 'Santiago, Chile', 12, 16843943, 23455901, 'Yoshis Crafted World', 'Yeliner');
+INSERT INTO compra VALUES ( '2020/02/27', 'Kirby Fighters 2', 'Santiago, Chile', 14, 27088060, 21763334, 'Kirby Fighters 2', 'Janny');
+INSERT INTO compra VALUES ( '2022/12/01', 'Kirby Fighters 2', 'Bogota, Colombia', 14, 22647907, 19590093, 'Kirby Fighters 2', 'Jennifer');
+INSERT INTO compra VALUES ( '2021/09/07', 'Fire Emblem: Three Houses', 'Caracas,Venezuela', 14, 29950856, 20637974, 'Fire Emblem: Three Houses', 'Eustaquio');
+INSERT INTO compra VALUES ( '2020/05/16', 'No Marios Sky', 'Caracas,Venezuela', 12, 21084000, 20543792, 'No Marios Sky', 'Reyshell');
+INSERT INTO compra VALUES ( '2019/07/23', 'No Marios Sky', 'Santiago, Chile', 12, 19265503, 21763334, 'No Marios Sky', 'Janny');
+INSERT INTO compra VALUES ( '2020/11/12', 'Kirby Fighters 2', 'Santiago, Chile', 14, 13222745, 23455901, 'Kirby Fighters 2', 'Yeliner');
+INSERT INTO compra VALUES ( '2019/01/14', 'Animal Crossing: New Leaf', 'Santiago, Chile', 13, 16843943, 22754982, 'Animal Crossing: New Leaf', 'Jose');
+INSERT INTO compra VALUES ( '2020/05/30', 'No Marios Sky', 'Bogota, Colombia', 12, 23980727, 20512230, 'No Marios Sky', 'Tito');
+INSERT INTO compra VALUES ( '2021/12/13', 'Pokemon X', 'Bogota, Colombia', 7, 28920558, 19590093, 'Pokemon X', 'Jennifer');
+INSERT INTO compra VALUES ( '2021/07/09', 'Yoshis Crafted World', 'Santiago, Chile', 12, 27088060, 23455901, 'Yoshis Crafted World', 'Yeliner');
+INSERT INTO compra VALUES ( '2022/08/12', 'Animal Crossing: New Leaf', 'Caracas,Venezuela', 13, 26356760, 20637974, 'Animal Crossing: New Leaf', 'Eustaquio');
+INSERT INTO compra VALUES ( '2019/04/16', 'Yoshis Crafted World', 'Santiago, Chile', 12, 19265503, 21763334, 'Yoshis Crafted World', 'Janny');
+INSERT INTO compra VALUES ( '2020/09/23', 'Pokemon X', 'Caracas,Venezuela', 7, 26356760, 20543792, 'Pokemon X', 'Reyshell');
+INSERT INTO compra VALUES ( '2021/06/17', 'Fire Emblem: Three Houses', 'Santiago, Chile', 14, 16843943, 21763334, 'Fire Emblem: Three Houses', 'Janny');
+INSERT INTO compra VALUES ( '2022/07/28', 'Pokemon X', 'Caracas,Venezuela', 7, 26356760, 20543792, 'Pokemon X', 'Reyshell');
+INSERT INTO compra VALUES ( '2019/04/15', 'Yoshis Crafted World', 'Bogota, Colombia', 12, 27903171, 23428964, 'Yoshis Crafted World', 'Ignacio');
+
+
