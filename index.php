@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="./css/style.css">
     <script src="https://kit.fontawesome.com/e91a61ea13.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body oncontextmenu="return false" onkeydown="return false">
     
     <!-- HEADER -->
     <header class="header">
